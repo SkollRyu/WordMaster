@@ -7,4 +7,6 @@ module com.example.wordmasterwithgui {
 
     opens App to javafx.fxml;
     exports App;
+    exports Controller;
+    opens Controller to javafx.fxml;
 }
