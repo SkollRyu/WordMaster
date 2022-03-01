@@ -61,4 +61,6 @@ public class Player {
     public String toString(){
         return userName + "," + gamesPlayed + "," + highScore;
     }
+
+    public int getHighScore() { return highScore; }
 }

@@ -1,6 +1,6 @@
 package Infrastructure;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Players {
@@ -108,6 +108,42 @@ public class Players {
             addPlayer(player);
         } else {
             player.incGamesPlayed();
+        }
+    }
+
+    /**
+     * This is method to sort and print the score board according to data in players.txt
+     */
+    public void printScoreBoard(){
+        HashMap<String, Integer> map = new HashMap<>();
+
+        // Put name and value into hashmap
+        for(Player player : players){
+            map.put(player.getUserName(), player.getHighScore());
+        }
+
+        List<Map.Entry<String, Integer>> compareList = new LinkedList<>(map.entrySet());
+
+        // Sort the list in reverse order
+        // Since compareTo give +1 if x > y, we can make it times -1 to flip it back
+        // The "->" is just lambda
+        compareList.sort((x, y) -> (x.getValue()).compareTo(y.getValue()) * -1);
+
+        // Put the key and values to scoreBoard map from compareList
+        // The reason why I use LinkedHashMap is that there is no order for just HashMap, but do in LinkedHashMap
+        HashMap<String, Integer> scoreBoard = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : compareList) {
+            scoreBoard.put(entry.getKey(),entry.getValue());
+        }
+
+        System.out.println("<==== ScoreBoard (TOP 5) ====>");
+        int counter = 1;
+        for (Map.Entry<String, Integer> entry : scoreBoard.entrySet()) {
+            if(counter < 6){
+                System.out.println( counter + ". " + entry.getKey() +
+                        ", Score: " + entry.getValue());
+                counter++;
+            }
         }
     }
 

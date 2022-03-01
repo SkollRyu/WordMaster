@@ -34,11 +34,9 @@ public class LoginController extends Controller{
     @FXML
     private PasswordField tfPassword;
     @FXML
-    TextField tfShowPassword;
+    private TextField tfShowPassword;
     @FXML
-    StackPane stackPane;
-    @FXML
-    CheckBox cbShowPassword;
+    private CheckBox cbShowPassword;
     
 
     private void sceneReload(ActionEvent e) {
@@ -54,19 +52,21 @@ public class LoginController extends Controller{
     }
 
     public void loginAction(ActionEvent e){
+        // TODO - to get password when show password is toggled
         password = tfPassword.getText();
         System.out.println(password);
     }
 
     public void showPassword(ActionEvent e){
-        // Textfield <-> PasswordField
+        // TextField <-> PasswordField
+        String tempString = "";
         if(cbShowPassword.isSelected()){
-            password = tfPassword.getText();
-            tfShowPassword.setText(password);
+            tempString = tfPassword.getText();
+            tfShowPassword.setText(tempString);
             tfShowPassword.setVisible(true);
         } else {
-            password = tfShowPassword.getText();
-            tfPassword.setText(password);
+            tempString = tfShowPassword.getText();
+            tfPassword.setText(tempString);
             tfShowPassword.setVisible(false);
         }
     }
