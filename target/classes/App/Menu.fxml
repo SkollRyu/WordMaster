@@ -15,17 +15,17 @@
       </Label>
       <HBox layoutX="126.0" layoutY="292.0" prefHeight="54.0" prefWidth="649.0" spacing="100.0">
          <children>
-          <Button mnemonicParsing="false" onAction="#switchRegisterScene" prefHeight="50.0" prefWidth="150.0" text="New Player">
+          <Button fx:id="btnNewPlayer" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="New Player">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Exising Player">
+            <Button fx:id="btnExistPlayer" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="Exising Player">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Guest">
+            <Button fx:id="btnGuest" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="Guest">
                <font>
                   <Font size="18.0" />
                </font>
