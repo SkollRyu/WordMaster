@@ -44,11 +44,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Slider fx:id="slideNumOfGuesses" blockIncrement="1.0" layoutX="238.0" layoutY="424.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" prefHeight="38.0" prefWidth="426.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-      <Label fx:id="lbNumOfGuesses" layoutX="41.0" layoutY="417.0" prefHeight="19.0" prefWidth="190.0" text="Number of Guesses: ">
+      <Slider fx:id="slideNumOfGuesses" blockIncrement="1.0" layoutX="236.0" layoutY="419.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" prefHeight="38.0" prefWidth="426.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Label fx:id="lbNumOfGuesses" layoutX="41.0" layoutY="411.0" prefHeight="19.0" prefWidth="190.0" text="Number of Guesses: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <Label fx:id="lbWordLength" layoutX="92.0" layoutY="453.0" prefHeight="27.0" prefWidth="140.0" text="Word Length:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Slider fx:id="slideWordLength" blockIncrement="1.0" layoutX="235.0" layoutY="461.0" majorTickUnit="1.0" max="14.0" min="4.0" minorTickCount="0" prefHeight="38.0" prefWidth="426.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
    </children>
 </AnchorPane>

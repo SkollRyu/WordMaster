@@ -28,6 +28,7 @@ public class LobbyController extends Controller implements Initializable {
     private Parent root;
 
     private int numOfGuesses;
+    private int wordLength;
 
     @FXML
     private Button btnNewGame;
@@ -39,6 +40,10 @@ public class LobbyController extends Controller implements Initializable {
     private Label lbNumOfGuesses;
     @FXML
     private Slider slideNumOfGuesses;
+    @FXML
+    private Label lbWordLength;
+    @FXML
+    private Slider slideWordLength;
 
 
 
@@ -67,11 +72,22 @@ public class LobbyController extends Controller implements Initializable {
         numOfGuesses = (int)slideNumOfGuesses.getValue();
         lbNumOfGuesses.setText("Number of Guesses: " + Integer.toString(numOfGuesses));
 
+        wordLength = (int)slideWordLength.getValue();
+        lbWordLength.setText("Word Length: " + Integer.toString(wordLength));
+
         slideNumOfGuesses.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 numOfGuesses = (int)slideNumOfGuesses.getValue();
                 lbNumOfGuesses.setText("Number of Guesses: " + Integer.toString(numOfGuesses));
+            }
+        });
+
+        slideWordLength.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                wordLength = (int)slideWordLength.getValue();
+                lbWordLength.setText("Word Length: " + Integer.toString(wordLength));
             }
         });
     }
