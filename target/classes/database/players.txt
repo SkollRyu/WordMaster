@@ -1,2 +1,2 @@
-darrne,1,350
-darren,7,450
+darrne,password,1,350
+darren,testing,7,450

@@ -52,8 +52,12 @@ public class LoginController extends Controller{
     }
 
     public void loginAction(ActionEvent e){
-        // TODO - to get password when show password is toggled
-        password = tfPassword.getText();
+        // TODO - check if is the same as written in player.txt
+        if(cbShowPassword.isSelected()){
+            password = tfShowPassword.getText();
+        } else {
+            password = tfPassword.getText();
+        }
         System.out.println(password);
     }
 

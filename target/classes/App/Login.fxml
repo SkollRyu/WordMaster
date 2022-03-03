@@ -32,7 +32,7 @@
             <StackPane fx:id="stackPane" prefHeight="25.0" prefWidth="200.0">
                <children>
                   <PasswordField fx:id="tfPassword" />
-                  <TextField fx:id="tfShowPassword" visible="false" />
+                  <TextField fx:id="tfShowPassword" />
                </children>
             </StackPane>
          </children>

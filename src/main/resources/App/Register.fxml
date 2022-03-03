@@ -6,6 +6,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -16,14 +17,24 @@
             <Font name="Consolas Bold" size="48.0" />
          </font>
       </Label>
-      <VBox layoutX="366.0" layoutY="193.0" prefHeight="185.0" prefWidth="206.0" spacing="30.0">
+      <VBox layoutX="367.0" layoutY="196.0" prefHeight="151.0" prefWidth="206.0" spacing="30.0">
          <children>
             <TextField fx:id="tfTitle" />
-            <PasswordField />
-            <PasswordField />
+            <StackPane prefHeight="39.0" prefWidth="206.0">
+               <children>
+                  <PasswordField fx:id="tfPassword1" />
+                  <TextField fx:id="tfShowPassword1" visible="false" />
+               </children>
+            </StackPane>
+            <StackPane prefHeight="0.0" prefWidth="206.0">
+               <children>
+                  <PasswordField fx:id="tfPassword2" />
+                  <TextField fx:id="tfShowPassword2" visible="false" />
+               </children>
+            </StackPane>
          </children>
       </VBox>
-      <VBox layoutX="238.0" layoutY="195.0" prefHeight="176.0" prefWidth="124.0" spacing="35.0">
+      <VBox layoutX="238.0" layoutY="195.0" prefHeight="176.0" prefWidth="124.0" spacing="43.0">
          <children>
             <Label text="Username">
                <font>
@@ -48,6 +59,6 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <CheckBox layoutX="595.0" layoutY="308.0" mnemonicParsing="false" text="show passowrd" />
+      <CheckBox fx:id="cbShowPassword" layoutX="595.0" layoutY="324.0" mnemonicParsing="false" onAction="#showPassword" text="show passowrd" />
    </children>
 </AnchorPane>
