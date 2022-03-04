@@ -1,8 +1,13 @@
 # WordMasterWithGUI
 
+# Reminder
+- the game logic work, what I need to do is to translate it to event-driven GUI based game.
+- Imagine the command and enter I type is all button that help me execute the functions
+
 # Big Stuff to do
 - [] all scenes
 - [] connect scenes to word master game engine
+- [] playerData controller for controlling player data
 
 # Program Flow
 1. Enter the game
@@ -18,7 +23,7 @@
    1. Get the username and password
    2. Check both fields are not empty; username: at least 2 char, password: regex
    3. check if username exist, if not exists, tell him/her to register
-   4. if exist, we check if password equals to the password the related player in players arraylist
+   4. if exists, we check if password equals to the password the related player in players arraylist
    5. if yes, transit to lobby; if no, alert Wrong Password
 5. Guest: call getPlayerData
    1. Transit to lobby, disable save for them

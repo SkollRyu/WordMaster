@@ -1,23 +1,13 @@
 package Controller;
 
 import App.App;
-import javafx.application.Platform;
+import Infrastructure.PlayerData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.*;
-import javafx.scene.layout.StackPane;
 import javafx.stage.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -30,6 +20,7 @@ public class LoginController extends Controller{
 
     private String password = "";
     private String userName = "";
+    private final PlayerData playerData = new PlayerData();
 
     @FXML
     private TextField tfUserName;
@@ -39,7 +30,8 @@ public class LoginController extends Controller{
     private TextField tfShowPassword;
     @FXML
     private CheckBox cbShowPassword;
-    
+    @FXML
+    private Button btnBack;
 
     private void sceneReload(ActionEvent e) {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -49,27 +41,38 @@ public class LoginController extends Controller{
     }
 
     public void switchMenuScene(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Menu.fxml")));
+        if (e.getSource() == btnBack){
+            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Menu.fxml")));
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Lobby.fxml")));
+        }
         sceneReload(e);
     }
 
-    private void checkLogin(){
+    /**
+     * Check login things
+     * @return true if valid
+     */
+    private boolean checkLogin(){
         userName = tfUserName.getText();
-        if(userName == ""){
-            Alert emptyAlert = new Alert(Alert.AlertType.WARNING);
-            emptyAlert.setContentText("THE USERNAME FIELD CANNOT BE EMPTY");
-            emptyAlert.showAndWait();
-        }
+        return playerData.loginValidation(userName, password);
     }
 
-    public void loginAction(ActionEvent e){
+    /**
+     * Login button event trigger
+     * @param e
+     * @throws IOException
+     */
+    public void loginAction(ActionEvent e) throws IOException {
         if(cbShowPassword.isSelected()){
             password = tfShowPassword.getText();
         } else {
             password = tfPassword.getText();
         }
-        checkLogin();
-        System.out.println(password);
+        if (checkLogin()){
+            switchMenuScene(e);
+        }
+        // check scene and pass the player object into that scene
     }
 
     public void showPassword(ActionEvent e){

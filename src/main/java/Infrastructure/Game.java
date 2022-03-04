@@ -8,7 +8,7 @@ public class Game {
 
     private int numTurns;
     private int estimatedTurns;
-    private Players players = new Players();
+    private final Players playerList = new Players();
 
     /**
      * Main game loop
@@ -20,8 +20,8 @@ public class Game {
         WordList wordList = new WordList();
         do{
             playTurn(player,wordList);
-            players.updatePlayerList(player);
-            players.writePlayerFile();
+            playerList.updatePlayerList(player);
+            playerList.writePlayerFile();
         } while(continueGame());
     }
 
@@ -34,10 +34,10 @@ public class Game {
      * @return the Player
      */
     private Player getPlayerData(){
-        players.readPlayerFile();
+        playerList.readPlayerFile();
         String userName = getUserName();
         String userPassword = getUserPassword();
-        Player player = players.findPlayer(userName);
+        Player player = playerList.findPlayer(userName);
         if (player == null){
             player = new Player(userName, userPassword,0,0);
         }

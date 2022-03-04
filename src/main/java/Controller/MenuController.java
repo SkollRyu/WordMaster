@@ -1,6 +1,8 @@
 package Controller;
 
+import Infrastructure.Game;
 import App.App;
+import Infrastructure.PlayerData;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +41,8 @@ public class MenuController extends Controller{
 
     @FXML
     private Button btnGuest;
+
+
 
     private void sceneReload(ActionEvent e) {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

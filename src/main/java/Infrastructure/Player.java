@@ -27,7 +27,7 @@ public class Player {
         return userName;
     }
 
-    public void changePassword(String password){
+    public void setPassword(String password){
         this.password = password;
     }
 
@@ -59,7 +59,7 @@ public class Player {
      * @return formatted String
      */
     public String toString(){
-        return userName + "," + gamesPlayed + "," + highScore;
+        return userName + "," + password + "," + gamesPlayed + "," + highScore;
     }
 
     public int getHighScore() { return highScore; }

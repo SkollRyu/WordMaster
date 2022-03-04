@@ -32,7 +32,7 @@
             <StackPane fx:id="stackPane" prefHeight="25.0" prefWidth="200.0">
                <children>
                   <PasswordField fx:id="tfPassword" />
-                  <TextField fx:id="tfShowPassword" />
+                  <TextField fx:id="tfShowPassword" visible="false" />
                </children>
             </StackPane>
          </children>
@@ -42,7 +42,7 @@
             <Font name="Consolas Bold" size="48.0" />
          </font>
       </Label>
-      <Button layoutX="38.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchMenuScene" text="Back" />
+      <Button fx:id="btnBack" layoutX="38.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchMenuScene" text="Back" />
       <Button layoutX="366.0" layoutY="349.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="47.0" prefWidth="169.0" text="Login">
          <font>
             <Font size="18.0" />

@@ -66,8 +66,7 @@ public class Players {
      * @return true if it is related; false if it is not
      */
     public boolean checkValidPlayerString(String line){
-        // TODO - Need to add validation for password
-        return Pattern.matches("^[a-zA-Z0-9]+,\\d+,[0-9]+$", line);
+        return Pattern.matches("^[a-zA-Z0-9]+,[a-zA-Z0-9]+,\\d+,[0-9]+$", line);
     }
 
 
