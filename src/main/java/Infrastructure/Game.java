@@ -16,7 +16,7 @@ public class Game {
      * The player can choose to play another round
      */
     public void playGame() {
-        Player player = getPlayerData();
+        Player player = getPlayerData(); // this should be separated from playGame
         WordList wordList = new WordList();
         do{
             playTurn(player,wordList);
@@ -60,11 +60,10 @@ public class Game {
     }
 
     private String getUserPassword(){
-        // TODO - regex need to be done
         Scanner sc = new Scanner(System.in);
         String userPassword;
         do {
-            System.out.println("Please enter your userName: ");
+            System.out.println("Please enter your password: ");
             userPassword = sc.next();
         }  while (userPassword.length() <= 2);
         return userPassword;
