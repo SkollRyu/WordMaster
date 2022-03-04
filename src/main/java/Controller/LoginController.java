@@ -29,8 +29,10 @@ public class LoginController extends Controller{
     private Parent root;
 
     private String password = "";
+    private String userName = "";
 
-
+    @FXML
+    private TextField tfUserName;
     @FXML
     private PasswordField tfPassword;
     @FXML
@@ -51,13 +53,22 @@ public class LoginController extends Controller{
         sceneReload(e);
     }
 
+    private void checkLogin(){
+        userName = tfUserName.getText();
+        if(userName == ""){
+            Alert emptyAlert = new Alert(Alert.AlertType.WARNING);
+            emptyAlert.setContentText("THE USERNAME FIELD CANNOT BE EMPTY");
+            emptyAlert.showAndWait();
+        }
+    }
+
     public void loginAction(ActionEvent e){
-        // TODO - check if is the same as written in player.txt
         if(cbShowPassword.isSelected()){
             password = tfShowPassword.getText();
         } else {
             password = tfPassword.getText();
         }
+        checkLogin();
         System.out.println(password);
     }
 
