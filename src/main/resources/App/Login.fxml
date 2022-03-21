@@ -37,7 +37,7 @@
             </StackPane>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutX="160.0" layoutY="68.0" prefHeight="112.0" prefWidth="581.0" text="Login Pannel">
+      <Label alignment="CENTER" layoutX="160.0" layoutY="68.0" prefHeight="112.0" prefWidth="581.0" text="Login Panel">
          <font>
             <Font name="Consolas Bold" size="48.0" />
          </font>

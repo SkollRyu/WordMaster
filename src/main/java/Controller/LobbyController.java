@@ -58,7 +58,7 @@ public class LobbyController extends Controller implements Initializable {
     // TODO - switch according to button-id
     public void switchScene(ActionEvent e) throws IOException {
         if (e.getSource() == btnNewGame){
-            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Register.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Game.fxml")));
         } else if (e.getSource() == btnLeaderBoard){
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Login.fxml")));
         }

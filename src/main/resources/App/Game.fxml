@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #FFDE8D;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Game">
+   <children>
+      <TextField layoutX="93.0" layoutY="351.0" prefHeight="25.0" prefWidth="214.0" />
+      <Text layoutX="161.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INPUT" wrappingWidth="74.13671875">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <CheckBox layoutX="14.0" layoutY="469.0" mnemonicParsing="false" text="Cheat Mode" />
+      <Text layoutX="68.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Word Master" wrappingWidth="268.13671875">
+         <font>
+            <Font size="46.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.05263157933950424" blue="0.0736842080950737" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9605262875556946" green="0.5380725860595703" blue="0.5380725860595703" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Text layoutX="140.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FEEDBACK" wrappingWidth="119.13671875">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="lbTurns" layoutX="307.0" layoutY="14.0" prefHeight="17.0" prefWidth="87.0" text="Turns:" />
+      <Label layoutX="196.0" layoutY="469.0" prefHeight="17.0" prefWidth="190.0" text="Secret Word: " />
+      <Label fx:id="lbFeedback" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="215.0" prefHeight="35.0" prefWidth="244.0" text="_ _ _ _ _ _ _ _ _ _ _ _" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
