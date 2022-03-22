@@ -19,7 +19,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <CheckBox layoutX="14.0" layoutY="469.0" mnemonicParsing="false" text="Cheat Mode" />
+      <CheckBox fx:id="cbShowSecretWord" layoutX="14.0" layoutY="469.0" mnemonicParsing="false" onAction="#showSecretWord" text="Cheat Mode" />
       <Text layoutX="68.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Word Master" wrappingWidth="268.13671875">
          <font>
             <Font size="46.0" />
@@ -47,7 +47,7 @@
          </font>
       </Text>
       <Label fx:id="lbTurns" layoutX="307.0" layoutY="14.0" prefHeight="17.0" prefWidth="87.0" text="Turns:" />
-      <Label layoutX="196.0" layoutY="469.0" prefHeight="17.0" prefWidth="190.0" text="Secret Word: " />
+      <Label fx:id="lbSecretWord" layoutX="36.0" layoutY="447.0" prefHeight="17.0" prefWidth="190.0" text="Secret Word: " />
       <Label fx:id="lbFeedback" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="201.0" prefHeight="35.0" prefWidth="244.0" text="_ _ _ _ _ _ _ _ _ _ _ _" textAlignment="CENTER">
          <font>
             <Font size="24.0" />

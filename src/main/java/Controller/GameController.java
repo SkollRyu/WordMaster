@@ -3,9 +3,11 @@ package Controller;
 import Infrastructure.Player;
 import Infrastructure.PlayerData;
 import Infrastructure.WordList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -26,12 +28,14 @@ public class GameController extends Controller{
 
     @FXML
     private Label lbTurns;
-
     @FXML
     private Label lbFeedback;
-
+    @FXML
+    private Label lbSecretWord;
     @FXML
     private TextField tfInput;
+    @FXML
+    private CheckBox cbShowSecretWord;
 
     public GameController(){
         wordList = new WordList();
@@ -45,22 +49,27 @@ public class GameController extends Controller{
 
     public void playTurn(){
         boolean flag;
-        displayGuessWord(); // todo
         if (numTurns != 0 ){
-            String playerGuess = getPlayerGuess(wordLength);
+            String playerGuess = getPlayerGuess();
             // todo - return null and break
-            flag = wordList.compareWords(playerGuess);
-            displayGuessWord();
-            displayTurns();
-            if(flag){
-                int score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
+            if(playerGuess != null){
+                flag = wordList.compareWords(playerGuess);
+                displayGuessWord();
+                displayTurns();
+                if(flag){
+                    int score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
+                }
+                numTurns--;
             }
+        } else {
+            // player doesn't get the correct answer
+            System.out.println("you lose");
         }
         // TODO - wrong type doesn't turns--
     }
 
     private void displayGuessWord(){
-
+        wordList.printDisplayWordArray();
     }
 
     private void displayTurns(){
@@ -71,7 +80,15 @@ public class GameController extends Controller{
         return 100 / estimatedTurns * (estimatedTurns - actualTurns + 1) * wordLength;
     }
 
-    public String getPlayerGuess(int wordLength){
+    public void showSecretWord(ActionEvent e){
+        if(cbShowSecretWord.isSelected()){
+            lbSecretWord.setText("Secret word " + secretWord);
+        } else if(!cbShowSecretWord.isSelected()){
+            lbSecretWord.setText("");
+        }
+    }
+
+    public String getPlayerGuess(){
         // TODO - get from the text field
         String playerGuess;
         boolean flag = false;
