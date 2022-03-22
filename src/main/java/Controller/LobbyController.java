@@ -1,6 +1,7 @@
 package Controller;
 
 import App.App;
+import Infrastructure.PlayerData;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -26,6 +27,7 @@ public class LobbyController extends Controller implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
 
     private int numOfGuesses;
     private int wordLength;
@@ -58,9 +60,11 @@ public class LobbyController extends Controller implements Initializable {
     // TODO - switch according to button-id
     public void switchScene(ActionEvent e) throws IOException {
         if (e.getSource() == btnNewGame){
+            PlayerData.setNumTurns(numOfGuesses);
+            PlayerData.setWordLength(wordLength);
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Game.fxml")));
         } else if (e.getSource() == btnLeaderBoard){
-            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Login.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("LeaderBoard.fxml")));
         }
         sceneReload(e);
     }
@@ -91,4 +95,6 @@ public class LobbyController extends Controller implements Initializable {
             }
         });
     }
+
+
 }

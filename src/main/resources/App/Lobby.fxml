@@ -13,17 +13,12 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="btnGuest" layoutX="702.0" layoutY="282.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="Save">
+    <Button fx:id="btnNewGame" layoutX="702.0" layoutY="148.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="New Game">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-    <Button fx:id="btnNewPlayer" layoutX="702.0" layoutY="139.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="New Game">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnExistPlayer" layoutX="702.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="Leaderboard">
+      <Button fx:id="btnLeaderBoard" layoutX="701.0" layoutY="250.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="50.0" prefWidth="150.0" text="Leaderboard">
          <font>
             <Font size="18.0" />
          </font>

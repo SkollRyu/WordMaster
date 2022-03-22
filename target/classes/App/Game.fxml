@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,10 +11,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #FFDE8D;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Game">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #FFDE8D;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
    <children>
-      <TextField layoutX="93.0" layoutY="351.0" prefHeight="25.0" prefWidth="214.0" />
-      <Text layoutX="161.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INPUT" wrappingWidth="74.13671875">
+      <TextField fx:id="tfInput" layoutX="93.0" layoutY="314.0" prefHeight="25.0" prefWidth="214.0" />
+      <Text layoutX="163.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INPUT" wrappingWidth="74.13671875">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -47,10 +48,11 @@
       </Text>
       <Label fx:id="lbTurns" layoutX="307.0" layoutY="14.0" prefHeight="17.0" prefWidth="87.0" text="Turns:" />
       <Label layoutX="196.0" layoutY="469.0" prefHeight="17.0" prefWidth="190.0" text="Secret Word: " />
-      <Label fx:id="lbFeedback" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="215.0" prefHeight="35.0" prefWidth="244.0" text="_ _ _ _ _ _ _ _ _ _ _ _" textAlignment="CENTER">
+      <Label fx:id="lbFeedback" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="201.0" prefHeight="35.0" prefWidth="244.0" text="_ _ _ _ _ _ _ _ _ _ _ _" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <Button fx:id="btnSubmit" layoutX="172.0" layoutY="370.0" mnemonicParsing="false" onAction="#playTurn" text="Submit" />
    </children>
 </AnchorPane>
