@@ -41,3 +41,11 @@
     - [ ] getNumTurns: get from Lobby form
     - [ ] getWordLength: get from Lobby form
     - [ ] wordlist.print...WordArray: need to interact with Game form
+
+
+# TO-DO (23 Mar)
+- [ ] Register
+- [ ] Guest
+- [ ] FeedBack
+- [ ] Write File
+- [ ] leaderboard

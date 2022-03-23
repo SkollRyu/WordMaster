@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 
 public class PlayerData {
     private static Player currPlayer;
-    private final static Players playerList = new Players();
+    private static Players playerList = new Players();
     private static int numTurns;
 
     public static int getNumTurns() {

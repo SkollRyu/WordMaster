@@ -1,17 +1,20 @@
 package Controller;
 
+import App.App;
 import Infrastructure.Player;
 import Infrastructure.PlayerData;
 import Infrastructure.WordList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 
+import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -21,10 +24,13 @@ public class GameController extends Controller{
     private Parent root;
 
     private int numTurns;
+    private int currTurns;
     private int estimatedTurns;
     private int wordLength;
+    private int score;
     private String secretWord;
     private WordList wordList;
+    private Player currPlayer;
 
     @FXML
     private Label lbTurns;
@@ -36,6 +42,8 @@ public class GameController extends Controller{
     private TextField tfInput;
     @FXML
     private CheckBox cbShowSecretWord;
+    @FXML
+    private Button btnLobby;
 
     public GameController(){
         wordList = new WordList();
@@ -44,36 +52,57 @@ public class GameController extends Controller{
         wordLength = PlayerData.getWordLength();
         wordList.setSecretWord(wordLength);
         secretWord = wordList.getSecretWord();
+        currPlayer = PlayerData.getCurrPlayer();
+        currTurns = 0;
     }
 
+    private void sceneReload(ActionEvent e) {
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // TODO - switch according to button-id
+    public void switchScene(ActionEvent e) throws IOException {
+        if (e.getSource() == btnLobby){
+            root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Lobby.fxml")));
+        }
+        sceneReload(e);
+    }
 
     public void playTurn(){
         boolean flag;
-        if (numTurns != 0 ){
+        if (numTurns != 0){
             String playerGuess = getPlayerGuess();
-            // todo - return null and break
             if(playerGuess != null){
                 flag = wordList.compareWords(playerGuess);
                 displayGuessWord();
                 displayTurns();
                 if(flag){
-                    int score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
+                    score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
+                    if (currPlayer.setHighScore(score)){
+                        System.out.println("New high Score");
+                    }
                 }
                 numTurns--;
+                currTurns++;
+                displayTurns();
             }
         } else {
             // player doesn't get the correct answer
+            // todo - alert you lose and go back lobby or try again
+            tfInput.setDisable(true);
             System.out.println("you lose");
         }
-        // TODO - wrong type doesn't turns--
     }
 
     private void displayGuessWord(){
-        wordList.printDisplayWordArray();
+        lbFeedback.setText(wordList.printDisplayWordArray());
     }
 
     private void displayTurns(){
-
+        lbTurns.setText("Turn: " + currTurns + "/" + estimatedTurns);
     }
 
     private int getScore(int estimatedTurns, int actualTurns, int wordLength){
@@ -93,15 +122,16 @@ public class GameController extends Controller{
         String playerGuess;
         boolean flag = false;
         playerGuess = tfInput.getText();
-        System.out.println(playerGuess); // checking
+        Alert inputAlert = new Alert(Alert.AlertType.WARNING);
         if(isPlayerGuessValidString(playerGuess)){
             if (playerGuess.length() == wordLength){
                 flag = true;
             } else {
-                System.out.println("Error: Invalid Word Length ->> Word Length: " + wordLength);
+                inputAlert.setContentText("Error: Invalid Word Length ->> Word Length: " + wordLength);
+                inputAlert.showAndWait();
             }
         }else{
-            System.out.println("Error: Invalid String Value: ->> (a-z/A-Z)");
+            inputAlert.setContentText("Error: Invalid String Value: ->> (a-z/A-Z)");
         }
 
         if(flag){

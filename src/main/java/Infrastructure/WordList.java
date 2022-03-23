@@ -69,11 +69,12 @@ public class WordList {
     /**
      * Prints the current word Array
      */
-    public void printDisplayWordArray() {
+    public String printDisplayWordArray() {
+        StringBuilder feedback = new StringBuilder();
         for (int i = 0; i < displayWordArray.length; i++) {
-            System.out.print(displayWordArray[i] + " ");
+            feedback.append(displayWordArray[i]).append(" ");
         }
-        System.out.println();
+        return feedback.toString();
     }
 
     /**

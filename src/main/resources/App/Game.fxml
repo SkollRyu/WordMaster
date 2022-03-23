@@ -46,7 +46,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Label fx:id="lbTurns" layoutX="307.0" layoutY="14.0" prefHeight="17.0" prefWidth="87.0" text="Turns:" />
+      <Label fx:id="lbTurns" layoutX="336.0" layoutY="14.0" prefHeight="17.0" prefWidth="54.0" text="Turns:" />
       <Label fx:id="lbSecretWord" layoutX="36.0" layoutY="447.0" prefHeight="17.0" prefWidth="190.0" text="Secret Word: " />
       <Label fx:id="lbFeedback" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="201.0" prefHeight="35.0" prefWidth="244.0" text="_ _ _ _ _ _ _ _ _ _ _ _" textAlignment="CENTER">
          <font>
@@ -54,5 +54,6 @@
          </font>
       </Label>
       <Button fx:id="btnSubmit" layoutX="172.0" layoutY="370.0" mnemonicParsing="false" onAction="#playTurn" text="Submit" />
+      <Button fx:id="btnLobby" layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchScene" text="Lobby" />
    </children>
 </AnchorPane>
