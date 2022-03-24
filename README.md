@@ -45,7 +45,8 @@
 
 # TO-DO (23 Mar)
 - [ ] Register
-- [ ] Guest
-- [ ] FeedBack
-- [ ] Write File
+- [x] Guest
+- [x] FeedBack
+- [x] Write File
 - [ ] leaderboard
+- [ ] Lobby go back to menu -> re-login or register 

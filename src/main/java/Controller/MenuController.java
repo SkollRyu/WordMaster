@@ -59,6 +59,7 @@ public class MenuController extends Controller{
         } else if (e.getSource() == btnExistPlayer){
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Login.fxml")));
         } else if (e.getSource() == btnGuest){
+            PlayerData.guestLogin();
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Lobby.fxml")));
         }
         sceneReload(e);

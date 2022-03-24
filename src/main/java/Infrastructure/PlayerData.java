@@ -1,7 +1,8 @@
 package Infrastructure;
 
-import Controller.LobbyController;
 import javafx.scene.control.Alert;
+
+import java.util.regex.Pattern;
 
 public class PlayerData {
     private static Player currPlayer;
@@ -53,8 +54,67 @@ public class PlayerData {
         return false;
     }
 
-    public void registerValidation(){
+    public boolean registerValidation(String userName, String password){
         // TODO - check if exist, tell player to login; if not, then add to the playerlist
+        Alert registerAlert = new Alert(Alert.AlertType.WARNING);
+        if(playerList.findPlayer(userName) != null){
+            // player exists
+            registerAlert.setContentText("The player is already exists. Please Log in instead");
+            registerAlert.showAndWait();
+            return false;
+        }
+        if(!check8characters(password)){
+            registerAlert.setContentText("The password need to be at least 8 characters long");
+            registerAlert.showAndWait();
+            return false;
+        }
+        if(!checkUpperCharacters(password)){
+            registerAlert.setContentText("You need at least 1 upper character");
+            registerAlert.showAndWait();
+            return false;
+        }
+        if(!checkLowerCharacters(password)){
+            registerAlert.setContentText("You need at least 1 lower character");
+            registerAlert.showAndWait();
+            return false;
+        }
+        if(!checkSpecialCharacters(password)){
+            registerAlert.setContentText("You need at least 1 special character");
+            registerAlert.showAndWait();
+            return false;
+        }
+        if(!checkNumericalCharacters(password)){
+            registerAlert.setContentText("You need at least 1 numerical character");
+            registerAlert.showAndWait();
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean check8characters(String password){
+        // characters except whitespace
+        return Pattern.matches("^\\S{8,}$", password);
+    }
+
+    public boolean checkUpperCharacters(String password){
+        return Pattern.matches("^[A-Z]+$", password);
+    }
+
+    public boolean checkLowerCharacters(String password){
+        return Pattern.matches("^[a-z]+$", password);
+    }
+
+    public boolean checkSpecialCharacters(String password){
+        return Pattern.matches("^[\\W]+$", password);
+    }
+
+    public boolean checkNumericalCharacters(String password){
+        return Pattern.matches("^[0-9]+$", password);
+    }
+
+    public static void guestLogin(){
+        currPlayer = new Player("Guest", "",0,0);
     }
 
     public void testPrint(){

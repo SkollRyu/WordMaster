@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class GameController extends Controller implements Initializable {
@@ -76,8 +75,8 @@ public class GameController extends Controller implements Initializable {
 
     public void playTurn(){
         boolean flag;
+        String playerGuess = getPlayerGuess();
         if (currTurns != estimatedTurns){
-            String playerGuess = getPlayerGuess();
             if(playerGuess != null){
                 flag = wordList.compareWords(playerGuess);
                 displayGuessWord();
@@ -94,6 +93,13 @@ public class GameController extends Controller implements Initializable {
                 currTurns++;
                 displayTurns();
             }
+        } else if (wordList.compareWords(playerGuess)){
+            score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
+            if (currPlayer.setHighScore(score)){
+                updatePlayerTxt();
+            }
+            displayHighScore(score);
+            tfInput.setDisable(true);
         } else {
             // player doesn't get the correct answer
             tfInput.setDisable(true);
@@ -119,7 +125,7 @@ public class GameController extends Controller implements Initializable {
 
     public void displayHighScore(int score){
         Alert scoreAlert = new Alert(Alert.AlertType.INFORMATION);
-        scoreAlert.setContentText("High SCore ! + Your Score is " + score);
+        scoreAlert.setContentText("High Score ! + Your Score is " + score);
         scoreAlert.showAndWait();
     }
 

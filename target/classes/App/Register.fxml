@@ -19,7 +19,7 @@
       </Label>
       <VBox layoutX="367.0" layoutY="196.0" prefHeight="151.0" prefWidth="206.0" spacing="30.0">
          <children>
-            <TextField fx:id="tfTitle" />
+            <TextField fx:id="tfUserName" />
             <StackPane prefHeight="39.0" prefWidth="206.0">
                <children>
                   <PasswordField fx:id="tfPassword1" />
@@ -53,8 +53,8 @@
             </Label>
          </children>
       </VBox>
-      <Button layoutX="40.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchMenuScene" text="Back" />
-      <Button layoutX="385.0" layoutY="378.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" text="Create Account">
+      <Button fx:id="btnMenu" layoutX="40.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchScene" text="Back" />
+      <Button fx:id="btnRegister" layoutX="385.0" layoutY="377.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="47.0" prefWidth="169.0" text="Create Account">
          <font>
             <Font size="18.0" />
          </font>
