@@ -7,6 +7,7 @@ import Infrastructure.WordList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,11 +15,13 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class GameController extends Controller{
+public class GameController extends Controller implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -53,7 +56,7 @@ public class GameController extends Controller{
         wordList.setSecretWord(wordLength);
         secretWord = wordList.getSecretWord();
         currPlayer = PlayerData.getCurrPlayer();
-        currTurns = 0;
+        currTurns = 1;
     }
 
     private void sceneReload(ActionEvent e) {
@@ -73,7 +76,7 @@ public class GameController extends Controller{
 
     public void playTurn(){
         boolean flag;
-        if (numTurns != 0){
+        if (currTurns != estimatedTurns){
             String playerGuess = getPlayerGuess();
             if(playerGuess != null){
                 flag = wordList.compareWords(playerGuess);
@@ -82,7 +85,9 @@ public class GameController extends Controller{
                 if(flag){
                     score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
                     if (currPlayer.setHighScore(score)){
-                        System.out.println("New high Score");
+                        displayHighScore(score);
+                        tfInput.setDisable(true);
+                        updatePlayerTxt();
                     }
                 }
                 numTurns--;
@@ -91,9 +96,16 @@ public class GameController extends Controller{
             }
         } else {
             // player doesn't get the correct answer
-            // todo - alert you lose and go back lobby or try again
             tfInput.setDisable(true);
-            System.out.println("you lose");
+            displayLoseMessage();
+            updatePlayerTxt();
+        }
+    }
+
+    private void updatePlayerTxt() {
+        if(!currPlayer.getUserName().equals("Guest")){
+            PlayerData.getPlayerList().updatePlayerList(currPlayer);
+            PlayerData.getPlayerList().writePlayerFile();
         }
     }
 
@@ -103,6 +115,18 @@ public class GameController extends Controller{
 
     private void displayTurns(){
         lbTurns.setText("Turn: " + currTurns + "/" + estimatedTurns);
+    }
+
+    public void displayHighScore(int score){
+        Alert scoreAlert = new Alert(Alert.AlertType.INFORMATION);
+        scoreAlert.setContentText("High SCore ! + Your Score is " + score);
+        scoreAlert.showAndWait();
+    }
+
+    public void displayLoseMessage(){
+        Alert loseAlert = new Alert(Alert.AlertType.INFORMATION);
+        loseAlert.setContentText("YOU LOSE ! THE WORD IS " + wordList.getSecretWord());
+        loseAlert.showAndWait();
     }
 
     private int getScore(int estimatedTurns, int actualTurns, int wordLength){
@@ -143,5 +167,11 @@ public class GameController extends Controller{
 
     private boolean isPlayerGuessValidString(String playerGuess){
         return Pattern.matches("^[a-z]+$", playerGuess);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbFeedback.setText(wordList.printDisplayWordArray());
+        lbTurns.setText("Turns: " + currTurns + "/" + estimatedTurns);
     }
 }

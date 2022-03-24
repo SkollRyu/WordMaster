@@ -31,6 +31,8 @@ public class LobbyController extends Controller implements Initializable {
 
     private int numOfGuesses;
     private int wordLength;
+    private int playerHighScore;
+    private String playerName;
 
     @FXML
     private Button btnNewGame;
@@ -46,6 +48,10 @@ public class LobbyController extends Controller implements Initializable {
     private Label lbWordLength;
     @FXML
     private Slider slideWordLength;
+    @FXML
+    private Label lbPlayerName;
+    @FXML
+    private Label lbPlayerHighScore;
 
 
 
@@ -72,6 +78,12 @@ public class LobbyController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        playerName = PlayerData.getCurrPlayer().getUserName();
+        lbPlayerName.setText("Name: " + playerName);
+
+        playerHighScore = PlayerData.getCurrPlayer().getHighScore();
+        lbPlayerHighScore.setText("High Score: " + playerHighScore);
 
         numOfGuesses = (int)slideNumOfGuesses.getValue();
         lbNumOfGuesses.setText("Number of Guesses: " + Integer.toString(numOfGuesses));
