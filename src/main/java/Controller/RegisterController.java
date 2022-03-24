@@ -83,7 +83,7 @@ public class RegisterController extends Controller{
     public void registerAction(ActionEvent e) throws IOException {
         if(cbShowPassword.isSelected()){
             password1 = tfShowPassword1.getText();
-            password2 = tfShowPassword1.getText();
+            password2 = tfShowPassword2.getText();
         } else {
             password1 = tfPassword1.getText();
             password2 = tfPassword2.getText();
@@ -96,21 +96,26 @@ public class RegisterController extends Controller{
 
     public boolean checkRegister(){
         // todo - fail register
+        boolean isValid = false;
         PlayerData pd = new PlayerData();
         userName = tfUserName.getText();
         if(!password1.isBlank() && !password2.isBlank()){
+            System.out.println(password1);
+            System.out.println(password2);
             if(password1.equals(password2)){
-                return pd.registerValidation(userName, password1);
+                isValid = pd.registerValidation(userName, password1);
             } else {
                 Alert registerAlert = new Alert(Alert.AlertType.WARNING);
                 registerAlert.setContentText("The password and confirm password do not match");
+                registerAlert.showAndWait();
             }
 
         } else {
             Alert registerAlert = new Alert(Alert.AlertType.WARNING);
-            registerAlert.setContentText("The password or confirm password cannot be blank or just whitespace");
+            registerAlert.setContentText("The password or confirm password cannot be blank\nor just whitespace");
+            registerAlert.showAndWait();
         }
-        return false;
+        return isValid;
     }
 
 

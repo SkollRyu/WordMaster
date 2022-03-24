@@ -88,7 +88,8 @@ public class PlayerData {
             registerAlert.showAndWait();
             return false;
         }
-
+        currPlayer = new Player(userName, password, 0,0);
+        playerList.addPlayer(currPlayer);
         return true;
     }
 
@@ -98,19 +99,19 @@ public class PlayerData {
     }
 
     public boolean checkUpperCharacters(String password){
-        return Pattern.matches("^[A-Z]+$", password);
+        return Pattern.matches("^\\w*[A-Z\\W]\\w*$", password);
     }
 
     public boolean checkLowerCharacters(String password){
-        return Pattern.matches("^[a-z]+$", password);
+        return Pattern.matches("^\\w*[a-z\\W]\\w*$", password);
     }
 
     public boolean checkSpecialCharacters(String password){
-        return Pattern.matches("^[\\W]+$", password);
+        return Pattern.matches("^\\w*[\\W]\\w*$", password);
     }
 
     public boolean checkNumericalCharacters(String password){
-        return Pattern.matches("^[0-9]+$", password);
+        return Pattern.matches("^\\w*[0-9\\W]\\w*$", password);
     }
 
     public static void guestLogin(){

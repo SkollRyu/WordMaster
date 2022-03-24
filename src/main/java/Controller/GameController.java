@@ -46,6 +46,8 @@ public class GameController extends Controller implements Initializable {
     private CheckBox cbShowSecretWord;
     @FXML
     private Button btnLobby;
+    @FXML
+    private Button btnSubmit;
 
     public GameController(){
         wordList = new WordList();
@@ -85,9 +87,12 @@ public class GameController extends Controller implements Initializable {
                     score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
                     if (currPlayer.setHighScore(score)){
                         displayHighScore(score);
-                        tfInput.setDisable(true);
                         updatePlayerTxt();
+                    } else {
+                        displayScore(score);
                     }
+                    tfInput.setDisable(true);
+                    btnSubmit.setDisable(true);
                 }
                 numTurns--;
                 currTurns++;
@@ -97,12 +102,17 @@ public class GameController extends Controller implements Initializable {
             score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
             if (currPlayer.setHighScore(score)){
                 updatePlayerTxt();
+                displayHighScore(score);
+            } else {
+                displayScore(score);
             }
-            displayHighScore(score);
             tfInput.setDisable(true);
+            btnSubmit.setDisable(true);
+
         } else {
             // player doesn't get the correct answer
             tfInput.setDisable(true);
+            btnSubmit.setDisable(true);
             displayLoseMessage();
             updatePlayerTxt();
         }
@@ -126,6 +136,12 @@ public class GameController extends Controller implements Initializable {
     public void displayHighScore(int score){
         Alert scoreAlert = new Alert(Alert.AlertType.INFORMATION);
         scoreAlert.setContentText("High Score ! + Your Score is " + score);
+        scoreAlert.showAndWait();
+    }
+
+    public void displayScore(int score){
+        Alert scoreAlert = new Alert(Alert.AlertType.INFORMATION);
+        scoreAlert.setContentText("Correct Guess ! + Your Score is " + score);
         scoreAlert.showAndWait();
     }
 
