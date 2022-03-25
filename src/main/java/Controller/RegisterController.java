@@ -2,7 +2,6 @@ package Controller;
 
 import App.App;
 import Infrastructure.PlayerData;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -60,7 +58,7 @@ public class RegisterController extends Controller{
     }
 
     public void showPassword(ActionEvent e){
-        // TextField <-> PasswordField
+        // TextField <-> PasswordField, lack of features in JavaFx
         String tempString1 = "";
         String tempString2 = "";
         if(cbShowPassword.isSelected()){
@@ -95,10 +93,16 @@ public class RegisterController extends Controller{
     }
 
     public boolean checkRegister(){
-        // todo - fail register
         boolean isValid = false;
         PlayerData pd = new PlayerData();
         userName = tfUserName.getText();
+        // username is not blank
+        if(userName.equals("")){
+            Alert registerAlert = new Alert(Alert.AlertType.WARNING);
+            registerAlert.setContentText("THE USERNAME FIELD CANNOT BE EMPTY");
+            registerAlert.showAndWait();
+        }
+        // both pw are not blank
         if(!password1.isBlank() && !password2.isBlank()){
             System.out.println(password1);
             System.out.println(password2);
@@ -109,7 +113,6 @@ public class RegisterController extends Controller{
                 registerAlert.setContentText("The password and confirm password do not match");
                 registerAlert.showAndWait();
             }
-
         } else {
             Alert registerAlert = new Alert(Alert.AlertType.WARNING);
             registerAlert.setContentText("The password or confirm password cannot be blank\nor just whitespace");

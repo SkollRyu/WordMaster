@@ -60,8 +60,8 @@ public class LoginController extends Controller{
 
     /**
      * Login button event trigger
-     * @param e
-     * @throws IOException
+     * @param e - action listener
+     * @throws IOException - if can't find or read the file
      */
     public void loginAction(ActionEvent e) throws IOException {
         if(cbShowPassword.isSelected()){

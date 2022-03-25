@@ -24,7 +24,7 @@
          </font>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbd80" height="370.0" layoutX="41.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" width="620.0" />
-      <Label layoutX="56.0" layoutY="48.0" prefHeight="32.0" prefWidth="131.0" text="Game Rules:">
+      <Label layoutX="56.0" layoutY="57.0" prefHeight="32.0" prefWidth="131.0" text="Game Rules:">
          <font>
             <Font size="22.0" />
          </font>
@@ -51,5 +51,35 @@
          </font>
       </Label>
       <Slider fx:id="slideWordLength" blockIncrement="1.0" layoutX="235.0" layoutY="461.0" majorTickUnit="1.0" max="14.0" min="4.0" minorTickCount="0" prefHeight="38.0" prefWidth="426.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="57.0" layoutY="114.0" prefHeight="38.0" prefWidth="348.0" text="1. You are asked to guess the secret word." wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="57.0" layoutY="160.0" prefHeight="38.0" prefWidth="579.0" text="2. If you have guessed the correct letter in the correct location show that letter in the correct place. " wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="56.0" layoutY="208.0" prefHeight="38.0" prefWidth="579.0" text="3. If you have guessed the correct letter in the wrong place show this with a * " wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="251.0" prefHeight="32.0" prefWidth="131.0" text="Example:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="56.0" layoutY="298.0" prefHeight="38.0" prefWidth="348.0" text="You Guess: sabre (The secret word is crime)" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="56.0" layoutY="336.0" prefHeight="38.0" prefWidth="348.0" text="The Feedback would be _ _ _ * e" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

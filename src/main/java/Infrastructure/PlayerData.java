@@ -31,6 +31,12 @@ public class PlayerData {
         playerList.readPlayerFile();
     }
 
+    /**
+     * This is the method to check if the username matches with the password in player list
+     * @param userName - username from register form
+     * @param password - password from register form
+     * @return true if it is valid, false versa
+     */
     public boolean loginValidation(String userName, String password) {
         Player player = playerList.findPlayer(userName);
         Alert loginAlert = new Alert(Alert.AlertType.WARNING);
@@ -54,9 +60,16 @@ public class PlayerData {
         return false;
     }
 
+    /**
+     * This is the method to check if the player exist, and is the password valid to be used
+     * to create a new account
+     * @param userName - username from register form
+     * @param password - password from register form
+     * @return true if it is valid, false versa
+     */
     public boolean registerValidation(String userName, String password){
-        // TODO - check if exist, tell player to login; if not, then add to the playerlist
         Alert registerAlert = new Alert(Alert.AlertType.WARNING);
+
         if(playerList.findPlayer(userName) != null){
             // player exists
             registerAlert.setContentText("The player is already exists. Please Log in instead");
@@ -90,6 +103,8 @@ public class PlayerData {
         }
         currPlayer = new Player(userName, password, 0,0);
         playerList.addPlayer(currPlayer);
+        // save it first, in case the player just close the game brutally
+        playerList.writePlayerFile();
         return true;
     }
 
@@ -116,10 +131,6 @@ public class PlayerData {
 
     public static void guestLogin(){
         currPlayer = new Player("Guest", "",0,0);
-    }
-
-    public void testPrint(){
-        playerList.printScoreBoard();
     }
 
     public static Player getCurrPlayer(){

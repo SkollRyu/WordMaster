@@ -14,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -53,8 +52,6 @@ public class LobbyController extends Controller implements Initializable {
     @FXML
     private Label lbPlayerHighScore;
 
-
-
     private void sceneReload(ActionEvent e) {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -62,8 +59,6 @@ public class LobbyController extends Controller implements Initializable {
         stage.show();
     }
 
-
-    // TODO - switch according to button-id
     public void switchScene(ActionEvent e) throws IOException {
         if (e.getSource() == btnNewGame){
             PlayerData.setNumTurns(numOfGuesses);
@@ -74,7 +69,6 @@ public class LobbyController extends Controller implements Initializable {
         }
         sceneReload(e);
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,6 +85,7 @@ public class LobbyController extends Controller implements Initializable {
         wordLength = (int)slideWordLength.getValue();
         lbWordLength.setText("Word Length: " + Integer.toString(wordLength));
 
+        // if their value change, then hot reload it
         slideNumOfGuesses.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {

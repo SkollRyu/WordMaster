@@ -44,9 +44,17 @@
 
 
 # TO-DO (23 Mar)
-- [ ] Register
+- [x] Register
 - [x] Guest
 - [x] FeedBack
 - [x] Write File
 - [ ] leaderboard
-- [ ] Lobby go back to menu -> re-login or register 
+- [x] Lobby go back to menu -> re-login or register 
+
+# TO-DO (24 MAR)
+- [x] UserName Empty
+- [ ] Debug
+- [ ] LeaderBoard
+- [ ] Report
+- [ ] Video
+- [x] new player just log in without playing, write down to players

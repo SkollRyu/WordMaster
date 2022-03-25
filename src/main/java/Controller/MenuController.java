@@ -1,29 +1,13 @@
 package Controller;
 
-import Infrastructure.Game;
 import App.App;
 import Infrastructure.PlayerData;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.*;
 import javafx.stage.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -35,14 +19,10 @@ public class MenuController extends Controller{
 
     @FXML
     private Button btnNewPlayer;
-
     @FXML
     private Button btnExistPlayer;
-
     @FXML
     private Button btnGuest;
-
-
 
     private void sceneReload(ActionEvent e) {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -51,8 +31,6 @@ public class MenuController extends Controller{
         stage.show();
     }
 
-
-    // TODO - switch according to button-id
     public void switchScene(ActionEvent e) throws IOException {
         if (e.getSource() == btnNewPlayer){
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Register.fxml")));
@@ -64,6 +42,4 @@ public class MenuController extends Controller{
         }
         sceneReload(e);
     }
-
-
 }

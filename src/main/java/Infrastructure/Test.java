@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 
 public class Test {
-    private static final Game game = new Game();
     Players players = new Players();
 
     @org.junit.Test
@@ -43,11 +42,4 @@ public class Test {
         assertEquals("darren", players.findPlayer("darren").getUserName());
         assertNull(players.findPlayer("Peter"));
     }
-
-    @org.junit.Test
-    @DisplayName("Game || get score Test")
-    public void getScoreTest(){
-        assertEquals(300 ,game.getScore(5,3,5));
-    }
-
 }

@@ -1,6 +1,5 @@
 package App;
 
-import Infrastructure.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * This is the constructor for JavaFX init Stage setting
+ */
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {

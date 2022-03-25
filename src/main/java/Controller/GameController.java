@@ -49,6 +49,9 @@ public class GameController extends Controller implements Initializable {
     @FXML
     private Button btnSubmit;
 
+    /**
+     * Constructor to initialize fields
+     */
     public GameController(){
         wordList = new WordList();
         numTurns = PlayerData.getNumTurns();
@@ -67,7 +70,11 @@ public class GameController extends Controller implements Initializable {
         stage.show();
     }
 
-    // TODO - switch according to button-id
+    /**
+     * Switch scene according to button-id
+     * @param e - action listerner
+     * @throws IOException - if can't read or find the fxml, throw it
+     */
     public void switchScene(ActionEvent e) throws IOException {
         if (e.getSource() == btnLobby){
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Lobby.fxml")));
@@ -90,32 +97,37 @@ public class GameController extends Controller implements Initializable {
                         updatePlayerTxt();
                     } else {
                         displayScore(score);
+                        updatePlayerTxt();
                     }
-                    tfInput.setDisable(true);
-                    btnSubmit.setDisable(true);
+                    setDisable();
                 }
                 numTurns--;
                 currTurns++;
                 displayTurns();
             }
         } else if (wordList.compareWords(playerGuess)){
+            // last guess but correct
             score = getScore(estimatedTurns, estimatedTurns - numTurns, wordLength);
             if (currPlayer.setHighScore(score)){
                 updatePlayerTxt();
                 displayHighScore(score);
             } else {
+                updatePlayerTxt();
                 displayScore(score);
             }
-            tfInput.setDisable(true);
-            btnSubmit.setDisable(true);
-
+            setDisable();
+            updatePlayerTxt();
         } else {
             // player doesn't get the correct answer
-            tfInput.setDisable(true);
-            btnSubmit.setDisable(true);
+            setDisable();
             displayLoseMessage();
             updatePlayerTxt();
         }
+    }
+
+    public void setDisable(){
+        tfInput.setDisable(true);
+        btnSubmit.setDisable(true);
     }
 
     private void updatePlayerTxt() {
@@ -164,7 +176,6 @@ public class GameController extends Controller implements Initializable {
     }
 
     public String getPlayerGuess(){
-        // TODO - get from the text field
         String playerGuess;
         boolean flag = false;
         playerGuess = tfInput.getText();
@@ -191,6 +202,8 @@ public class GameController extends Controller implements Initializable {
         return Pattern.matches("^[a-z]+$", playerGuess);
     }
 
+
+    // run-time checking
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lbFeedback.setText(wordList.printDisplayWordArray());
