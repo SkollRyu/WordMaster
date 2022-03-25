@@ -65,6 +65,7 @@ public class LobbyController extends Controller implements Initializable {
             PlayerData.setWordLength(wordLength);
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("Game.fxml")));
         } else if (e.getSource() == btnLeaderBoard){
+            // LeaderBoard hasn't been finished
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("LeaderBoard.fxml")));
         }
         sceneReload(e);
